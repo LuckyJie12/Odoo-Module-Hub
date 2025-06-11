@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+    <record model="ir.actions.client" id="AIChat">
+      <field name="name">AIChat</field>
+      <field name="tag">ai_chat.chatwindow</field>
+    </record>
+
+    <menuitem name="AIChat" id="ai_chat.menu_root" groups="base.group_user"
+      web_icon="ai_chat,static/description/icon.png" />
+    <menuitem name="AIChat" id="ai_chat_menu"
+      parent="ai_chat.menu_root"
+      action="AIChat" sequence="1" />
+  </data>
+</odoo>

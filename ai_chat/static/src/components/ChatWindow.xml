@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="ai_chat.ChatWindow">
+        <div class="chat-container bg-white rounded shadow-sm d-flex flex-column">
+            <!-- 消息显示区域 -->
+            <div t-ref="messageContainer" class="message-area flex-grow-1 p-3 overflow-auto">
+                <!-- 新增空状态提示 -->
+                <t t-if="!state.messages.length &amp;&amp; !state.isLoading">
+                    <div class="empty-chat h-100 d-flex flex-column justify-content-center align-items-center">
+                        <h3 class="text-muted mb-3">
+                            Hello
+                            <t t-esc="state.userName"/>，请开始你的聊天
+                        </h3>
+                        <i class="fa fa-comments-o fa-3x text-muted opacity-50"/>
+                    </div>
+                </t>
+                <t t-foreach="state.messages" t-key="message_index" t-as="message">
+                    <div class="message-row mb-3 d-flex" t-att-class="message.type === 'user' ? 'justify-content-end' : 'justify-content-start'">
+                        <div t-att-class="message.type === 'user' 
+                                    ? 'user-message bg-primary text-white' 
+                                    : 'ai-message'" 
+                            class="message-bubble p-3 rounded mb-2" 
+                            style="max-width: 80%">
+                            <div class="message-content" t-out="message.content"/>
+                            <div class="message-time small text-muted mt-1">
+                                <t t-esc="message.timestamp"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-if="state.isLoading">
+                    <div class="loading-indicator text-center text-muted">
+                        <i class="fa fa-spinner fa-spin"/> AI正在思考中...
+                    </div>
+                </t>
+            </div>
+            <!-- 输入区域 -->
+            <div class="input-area p-3 border-top">
+                <div class="input-group">
+                    <textarea 
+                        t-model="state.inputText" 
+                        class="form-control" 
+                        placeholder="输入你的消息..."
+                        rows="1"
+                        t-on-keyup="handleKeyPress"
+                        style="resize: none"/>
+                    <button 
+                        class="btn btn-primary" 
+                        t-att-disabled="state.isLoading" 
+                        t-on-click="sendMessage">
+                        <i class="fa fa-paper-plane"/> 发送
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

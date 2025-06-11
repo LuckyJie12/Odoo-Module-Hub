@@ -1,0 +1,83 @@
+.chat-container {
+  width: 100%;
+  height: 100%;
+}
+
+.message-bubble {
+  word-wrap: break-word;
+}
+
+.user-message {
+  border-radius: 15px 15px 0 15px;
+}
+
+.ai-message {
+  border-radius: 15px 15px 15px 0;
+  background-color: #f8f9fa !important;
+}
+
+.error-message {
+  border-radius: 15px;
+}
+
+.loading-indicator {
+  padding: 10px;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 空状态动画 */
+.empty-chat {
+  animation: fadeInUp 0.5s ease-out;
+  transform-origin: center;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Markdown内容容器样式 */
+/* 代码块样式设置 */
+pre code.hljs {
+  padding: 1.5em;
+  border-radius: 8px;
+  counter-reset: line;
+  /* 重置行号计数器 */
+  font-family: 'Fira Code', monospace;
+}
+
+/* 代码行样式 */
+.hljs code>span {
+  display: block;
+  position: relative;
+  padding-left: 3em;
+}
+
+/* 行号样式 */
+.hljs code>span:before {
+  content: counter(line);
+  counter-increment: line;
+  position: absolute;
+  left: 0;
+  width: 2.5em;
+  color: #666;
+  text-align: right;
+  padding-right: 1em;
+  border-right: 1px solid #444;
+}

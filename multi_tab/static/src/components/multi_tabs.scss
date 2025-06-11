@@ -1,0 +1,82 @@
+.tab-header {
+  display: flex;
+  overflow-x: auto; /* 标签多时可左右滚动 */
+  border-bottom: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.tab-header button {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.tab-header button:hover {
+  background-color: #eee;
+}
+
+.tab-header button.active {
+  border-color: #007bff;
+  font-weight: 600;
+  color: #007bff;
+  background-color: #fff;
+}
+
+.tab-pane {
+  flex: 1 1 auto;
+
+  // padding: 16px;
+
+  height: 100%; /* 让内容撑满剩余空间 */
+}
+
+.tab-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin: 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  border-color: #007bff;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.tab-close {
+  display: inline-block;
+  margin-left: 6px;
+  color: #aaa;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tab-close:hover {
+  color: red;
+}
+
+.o_action > :first-child {
+  height: 90%;
+}
+
+.o_action > :first-child .o_control_panel {
+  height: auto;
+}

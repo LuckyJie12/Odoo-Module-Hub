@@ -1,0 +1,10 @@
+<t t-name="multi_tab_WebClient" t-inherit="web.WebClient" t-inherit-mode="extension">
+  <xpath expr="//ActionContainer" position="replace" >
+    <t t-if="shouldUseMulActionContainer">
+      <MultiTabs/>
+    </t>
+    <t t-else="">
+      <ActionContainer/>
+    </t>
+  </xpath>
+</t>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+  <t t-name="multi_tab.multi_tabs">
+    <div style="width: 100%; height: 100%;" class="o_action_manager">
+      <div class="tab-header">
+        <t t-foreach="tabs" t-as="tab" t-key="tab.id">
+          <button
+            t-on-click="() => this.activateTab(tab.id)"
+            t-att-class="activeTabId === tab.id ? 'active' : ''">
+            <t t-esc="tab.title || 'Tab'" />
+            <span class="tab-close" t-on-click.stop="() => this.closeTab(tab.id)">×</span>
+          </button>
+        </t>
+      </div>
+      <div 
+        t-foreach="tabs" 
+        t-as="tab" 
+        t-key="tab.id" 
+        t-attf-class="tab-pane #{activeTabId === tab.id ? '' : 'd-none'} o_action">
+        <t t-component="tab.Component"
+            t-props="tab.componentProps"
+            t-key="tab.id"
+            className="'o_action'" />
+      </div>
+      <div style="visibility: hidden; height: 0; overflow: hidden;">
+        <t t-if="state.blankTab.Component">
+          <t t-component="state.blankTab.Component"
+            t-props="state.blankTab.componentProps"
+          />
+        </t>
+      </div>
+    </div>
+  </t>
+</templates>

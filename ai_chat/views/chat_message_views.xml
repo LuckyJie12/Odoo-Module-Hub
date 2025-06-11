@@ -1,0 +1,10 @@
+<odoo>
+  <record id="ai_chat_message_model_action" model="ir.actions.act_window">
+    <field name="name">聊天记录</field>
+    <field name="res_model">ai.chat.message</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <menuitem name="聊天记录" id="ai_chat_message_menu"
+      parent="ai_chat.menu_root"
+      action="ai_chat_message_model_action" sequence="1" />
+</odoo>
